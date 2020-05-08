@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Change a map's style</title>
+  <meta name="viewport"
+ content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <script
+ src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+  <link
+ href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css"
+ rel="stylesheet">
+  <style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  </style>
+  <style>
+#menu {
+position: absolute;
+background: #fff;
+padding: 10px;
+font-family: 'Open Sans', sans-serif;
+}
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="menu">
+<input id="cjiyr72x31bgz2rmh061vxx97" name="rtoggle"
+ value="Solo_MR" checked="checked" type="radio"><label
+ for="Solo_MR">Solo_MR</label>
+<input id="ck9y60hsq231x1iou306jubru" name="rtoggle"
+ value="Tutti" type="radio"><label for="Tutti">Tutti;</label>
+<input id="ck9yamrc20ki51iplesv2ovlg" name="rtoggle"
+ value="Densita" type="radio"><label for="Densita">Densit&agrave;</label>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiaXNocmFtaXQiLCJhIjoiY2pobHRocHFqMHE5OTMwcWs0cTI4dXZxayJ9.yW9mJgPPsXFJIXJylLyMiw';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/ishramit/cjiyr72x31bgz2rmh061vxx97',
+zoom: 1,
+center: [4.899, 52.372]
+});
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+function switchLayer(layer) {
+var layerId = layer.target.id;
+map.setStyle('mapbox://styles/ishramit/' + layerId);
+}
+for (var i = 0; i < inputs.length; i++) {
+inputs[i].onclick = switchLayer;
+}
+</script>
+</body>
+</html>
